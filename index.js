@@ -24,7 +24,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', require('./routes/authRoutes'));
-app.use('/blog', require('./routes/blogRoutes'));
+app.use('/api/blogs', require('./routes/blogRoutes'));
 
 if (['production'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));

@@ -4,7 +4,13 @@ const requireLogin = require('../middlewares/requireLogin');
 
 const Blog = mongoose.model('Blog');
 
-router.get('/api/blogs/:id', requireLogin, async (req, res) => {
+router.get('/', requireLogin, async (req, res) => {
+  const blogs = await Blog.find({ _user: req.user.id });
+
+  res.send(blogs);
+});
+
+router.get('/:id', requireLogin, async (req, res) => {
   const blog = await Blog.findOne({
     _user: req.user.id,
     _id: req.params.id,
@@ -13,13 +19,7 @@ router.get('/api/blogs/:id', requireLogin, async (req, res) => {
   res.send(blog);
 });
 
-router.get('/api/blogs', requireLogin, async (req, res) => {
-  const blogs = await Blog.find({ _user: req.user.id });
-
-  res.send(blogs);
-});
-
-router.post('/api/blogs', requireLogin, async (req, res) => {
+router.post('/', requireLogin, async (req, res) => {
   const { title, content } = req.body;
 
   const blog = new Blog({
