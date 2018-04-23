@@ -1,2 +1,3 @@
-# AdvancedNodeStarter
-Starting project for a course on Advanced Node @ Udemy
+#Advanced Node Example
+
+Mongo, Express, React, Node, Jest, Puppeteer, Passport, TravisCI, AWS Storage
