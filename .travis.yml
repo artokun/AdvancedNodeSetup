@@ -1,20 +1,27 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 dist: trusty
 services:
-  - mongodb
-  - redis-server
+- mongodb
+- redis-server
 env:
-  - NODE_ENV=ci PORT=3000
+- NODE_ENV=ci PORT=3000
 cache:
   directories:
-    - node_modules
-    - client/node_modules
+  - node_modules
+  - client/node_modules
 install:
-  - npm install
-  - npm run build
+- npm install
+- npm run build
 script:
-  - nohup npm run start & # "nohup" = no hangup (keep running command even if shell closes) trailing "&" means run previous command in background)
-  - sleep 3
-  - npm run test
+- nohup npm run start &
+- sleep 3
+- npm run test
+deploy:
+  provider: heroku
+  api_key:
+    secure: YzpLUoJADeESbxLr5BQD+XHNL3vzvEuablpWWTCtrvn+1l8vxpjzX9wxFioRgMC0egpbghx4wHPTR5nFnv7IY8A2MCPM/gdIy5HZqF711VVFxj6OpYLBMjlpZaNkADRN4IdcU7qUngBaVr7nlMwaSDuVupkyB2AKSTWz9WtmjVmN7KvyEaJKpsAsDzBBuS28Y2O8+oTnFsNWi8s0caPQU46polK3M5wNjzmwebeULdlnesx1h6qoSzr3ty2q61gMBVxh3kHuqphaBFN+AnqxSakYGpE1il/sZ/Zj74LCJaeTRgeqMAmBjWNhkAUJdXEmHN6lq6qMGvzfZtoKNO3GoLtunug4RPACtZCo57HqqHtOjuj9pJmyEjDDmpnCiB0xHMXXOU7OheO7/qEliSaSwX15wUsqZMvGPi0ra+3+/wHWgMCEuMWKtiLat3h1y4e7DPPbXldfwNQePmhQiv6ssZcM8el22QCFZuSeUTAVGZ3/Cu9XtsCq//RGcBYQr9xrgEvBi7pX2DWRf7Md3b+hqxjlN8hVtsWL25EbduqP4bTNNOdo9q+LMVmf1b5rDICzXq2t6uddEFO+tYNMm+l0hGwhebs80n2p6gEFyWXuwg3B/hLL7PfI3GusDfqqLXSuQt4n63w20u06hAbIJTsGxqjFQM95skPuRfarh6aEhmY=
+  app: AdvancedNodeSetup
+  on:
+    repo: artokun/AdvancedNodeSetup
