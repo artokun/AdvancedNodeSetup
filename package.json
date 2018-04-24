@@ -1,39 +1,18 @@
 {
-  "name": "server",
+  "name": "advanced-node-setup",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "jest": {
-    "setupTestFrameworkScriptFile": "./tests/setup.js"
-  },
+  "main": "server/index.js",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js --ignore tests",
+    "start": "npm run start --prefix server",
+    "server": "nodemon index.js --ignore tests --prefix server",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build":
-      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "test": "jest"
+    "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.227.1",
-    "body-parser": "^1.18.2",
-    "concurrently": "^3.5.1",
-    "cookie-session": "^2.0.0-beta.3",
-    "express": "^4.16.3",
-    "jest": "^22.4.3",
-    "migrate-mongoose": "^3.2.2",
-    "mongoose": "^5.0.16",
-    "nodemon": "^1.17.3",
-    "now": "^11.1.7",
-    "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0",
-    "path": "^0.12.7",
-    "path-parser": "^2.0.2",
-    "puppeteer": "^1.3.0",
-    "redis": "^2.8.0",
-    "uuid": "^3.2.1"
+    "concurrently": "^3.5.1"
   }
 }
