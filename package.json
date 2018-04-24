@@ -17,7 +17,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build":
       "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "deploy": "now -e NODE_ENV=production --token $NOW_TOKEN --npm",
+    "deploy":
+      "now -e NODE_ENV=production -e GOOGLE_CLIENT_ID=@an-gci GOOGLE_CLIENT_SECRET=@an-gcs MONGO_URI=@an-mu COOKIE_KEY=@an-c S3_ACCESS_KEY_ID=@an-s3aki S3_SECRET_ACCESS_KEY=@an-s3sak --token $NOW_TOKEN --npm",
     "alias": "now alias --token=$NOW_TOKEN",
     "test": "jest"
   },
