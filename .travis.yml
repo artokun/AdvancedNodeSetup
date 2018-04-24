@@ -8,8 +8,6 @@ services:
 env:
   matrix:
   - NODE_ENV=ci PORT=3000
-  global:
-    secure: jmS6MA/FKmuwhMl0uyRYDInDfbn4IFHtmcZNrzFvdrE8RjqS5ArBLweDHyJUlzcxcCGS8SITdbuP+X8qCh/x//VGnq+z/3Pe61hWOkFjQvjnYnwAi16FwcPw75/a/3QAOuAgT+SMbCIV3WQwD+OGOYHU5jn4SFqpK/vDHq8dwTdf8+dA8j2ryi9gYXyKtqkazYLVwcxFpyPAgM9E9ORmrXo9rocVUb3QsCAqmZZP1Zmuohyry9dvBVVgElWz3xjZ73COH8vGG8jrCdoHWM9BrDscxxaQQxvXPw8NJaR7rO/ntKDN4qHvGVvKDZAXKwOKNcYdv/k4ZgYZYVh9IOvEwJujlrutkMh0HQCxF4rHyjZAQZ8/mazcLTlmPTmtsAQe5LlK7lYxvSMr67oL1qDvD1tgSzImOWurFTBbOASjbZhLbPP/qFVgFe7L8Wvw93r//Vbyyrxd04K65E3whjE9mgq8Arir9ADHCNt0adczxO+ZbvKb1OKpJ6cSX9JI0w5TuDhAkybBD8FSNSIELLB7LsCu20nxPh/USS42TwXunCrEarx6xQFQjP2KHdFg2W8qNIxcqm5fDbH++W955OgtK8W/lNOJO1sS9HMuaNtIcMDI63qPvkIHD1bYntrz07kAMKU4IQ0DT2bwTwb+Kfe/s5y5V77TIYdW8s59aOU+MAw=
 cache:
   directories:
   - node_modules
@@ -21,5 +19,3 @@ script:
 - nohup npm run start &
 - sleep 3
 - npm run test
-- npm run deploy
-after_script: npm run alias
