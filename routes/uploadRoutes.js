@@ -19,7 +19,7 @@ router.get('/', requireLogin, async (req, res) => {
   s3.getSignedUrl(
     'putObject',
     {
-      Bucket: 'my-blog-bucket-456',
+      Bucket: 'my-blog-bucket-234',
       ContentType: 'jpeg',
       Key: key,
     },
