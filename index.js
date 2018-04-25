@@ -16,6 +16,10 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(enforce.HTTPS({ trustProtoHeader: true })); // force SSL in heroku
+}
+
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -30,7 +34,6 @@ app.use('/api/blogs', require('./routes/blogRoutes'));
 app.use('/api/upload', require('./routes/uploadRoutes'));
 
 if (['production', 'ci'].includes(process.env.NODE_ENV)) {
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static('client/build'));
 
   const path = require('path');
