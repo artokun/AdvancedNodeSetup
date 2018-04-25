@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const enforce = require('express-sslify');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
@@ -29,6 +30,7 @@ app.use('/api/blogs', require('./routes/blogRoutes'));
 app.use('/api/upload', require('./routes/uploadRoutes'));
 
 if (['production', 'ci'].includes(process.env.NODE_ENV)) {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static('client/build'));
 
   const path = require('path');
